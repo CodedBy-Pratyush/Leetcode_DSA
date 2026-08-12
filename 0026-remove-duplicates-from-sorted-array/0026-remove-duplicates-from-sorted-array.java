@@ -1,15 +1,26 @@
+// Class to hold the solution logic
 class Solution {
+    // Function to remove duplicates from sorted array in-place
     public int removeDuplicates(int[] nums) {
-        int c = 1;
+        // If array is empty, return 0
+        if (nums.length == 0) return 0;
 
-        for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] != nums[i + 1]) {
-                nums[c] = nums[i + 1];
-                c++;
+        // Pointer for last unique element
+        int i = 0;
+
+        // Start from second element
+        for (int j = 1; j < nums.length; j++) {
+            // If new unique element is found
+            if (nums[j] != nums[i]) {
+                // Move unique position forward
+                i++;
+                // Place new unique element
+                nums[i] = nums[j];
             }
         }
 
-        return c;
+        // i is last index of unique element, count = i + 1
+        return i + 1;
     }
 }
 
